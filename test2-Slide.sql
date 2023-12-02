@@ -32,22 +32,18 @@ create table data_types2(
 	is_deleted_flag bool -- 0 (đang hoạt động), 1 (đã xóa)
 );
 
--- For Trainee table
 alter table Trainee
 add constraint check_gender check (gender in ('male', 'female', 'unknown')),
 add constraint check_ET_IQ check (ET_IQ between '0' and '20'),
 add constraint check_ET_gmath check (ET_gmath between '0' and '20'),
 add constraint check_ET_english check (ET_english between '0' and '50');
 
--- For data_types table
 alter table data_types
 add constraint check_code_length check (length(code) = 5);
 
--- For data_types2 table
 alter table data_types2
 add constraint check_gender check (gender IN (0, 1));
 
--- Assuming that 'IsDeletedFlag' is meant to be a boolean (bit) field
 alter table data_types2
 add constraint check_is_deleted_flag check (is_deleted_flag in (0, 1));
 
